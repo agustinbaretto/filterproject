@@ -1,0 +1,15 @@
+<ion-view title="Config">
+  <ion-content class="padding">
+    <ion-list>
+        <ion-item ng-repeat="question in questions" type="item-text-wrap">
+            {{question.text}} <b>{{question.weight}}%</b> 
+            <div class="range range-balanced">
+            1
+            <input type="range" min="0" max="200" ng-model="question.weight">
+            200
+            </div>
+        </ion-item>
+        <div ng-repeat-end><br /></div>
+    </ion-list>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,18 @@
+<ion-view title="Filter">
+  <ion-content class="padding">
+    <ion-list>
+        <ion-item ng-repeat="question in questions" type="item-text-wrap">
+            {{question.text}}  <b>{{question.ratio}} out of 5</b>
+            <div class="range range-balanced">
+            1
+            <input type="range" min="1" max="5" ng-model="question.ratio" ng-change="calculate()">
+            5
+            </div>
+        </ion-item>
+        <div ng-repeat-end><br /></div>
+    </ion-list>
+  </ion-content>
+</ion-view>
+<div class="bar bar-footer bar-balanced">
+    <div class="title">{{total}} out of {{totalMax}}</div>
+  </div>
