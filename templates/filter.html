@@ -1,8 +1,11 @@
 <ion-view title="Filter">
   <ion-content class="padding">
     <ion-list>
-        <ion-item ng-repeat="question in questions" type="item-text-wrap">
-            {{question.text}}  <b>{{question.ratio}} out of 5</b>
+        <ion-item ng-repeat-start="cat in cats" type="item-text-wrap" class="stable-bg item-icon-left">
+            {{cat.name}} <i class="icon {{cat.icon}}"></i>
+        </ion-item>
+        <ion-item ng-repeat="question in questions" ng-if="question.cat == cat.name" type="item-text-wrap">
+            <b>{{question.id}}.</b> {{question.text}}  <b>{{question.ratio}} out of 5</b>
             <div class="range range-balanced">
             1
             <input type="range" min="1" max="5" ng-model="question.ratio" ng-change="calculate()">
@@ -13,6 +16,6 @@
     </ion-list>
   </ion-content>
 </ion-view>
-<div class="bar bar-footer bar-positive">
-    <div class="title">{{total}} out of {{totalMax}}</div>
-  </div>
+<ion-footer-bar ng-class="result">
+    <h1 class="title">Result: {{total | number:2}} out of {{totalMax}} ({{percent | number:0}}%)</h1>
+</ion-footer-bar>
